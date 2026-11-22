@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나의 포트폴리오 · 이우정</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+
+:root{
+  --ink:#35372d;
+  --muted:#6a6c60;
+  --yellow:#f7df69;
+  --paper:#fffef9;
+  --line:#e2dfd0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--paper);
+  background-image:radial-gradient(#b8aa7925 .65px,transparent .65px);
+  background-size:7px 7px;
+  font-family:'Gaegu','Malgun Gothic',cursive;
+  font-size:20px;
+  line-height:1.7;
+  word-break:keep-all;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{
+  outline:3px solid #876800;
+  outline-offset:5px;
+}
+.wrap{width:min(1120px,90%);margin:auto}
+.skip{
+  position:fixed;top:-100px;left:16px;
+  padding:10px;background:white;z-index:30;
+}
+.skip:focus{top:10px}
+header{
+  position:sticky;top:0;z-index:10;
+  background:#fffef9f5;
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  min-height:80px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.brand{font-size:25px;font-weight:700}
+.brand::before{
+  content:"";display:inline-block;width:12px;height:12px;
+  background:var(--yellow);border:1px solid var(--ink);
+  border-radius:50%;margin-right:10px;
+}
+nav{display:flex;gap:30px}
+nav a,.eyebrow,.date{
+  font-family:'Malgun Gothic',sans-serif;
+  font-size:11px;letter-spacing:1.5px;
+}
+nav a{padding:8px 0}
+nav a:hover,nav a[aria-current]{box-shadow:0 2px var(--ink)}
+.menu{
+  display:none;border:1px solid var(--line);
+  background:var(--paper);border-radius:30px;padding:4px 14px;
+}
+.hero{padding-top:44px}
+.hero-panel{
+  position:relative;overflow:hidden;isolation:isolate;
+  background:linear-gradient(135deg,#f9e789,#f7df69 70%);
+  border:1px solid #d5be61;
+  border-radius:90px 24px 90px 24px;
+  padding:45px 55px 30px;
+  box-shadow:0 16px 45px #9f8f3c10;
+}
+.hero-top{
+  display:flex;justify-content:space-between;
+  gap:15px;align-items:center;
+}
+.status{font-size:16px}
+.status::before{
+  content:"";display:inline-block;width:6px;height:6px;
+  background:var(--ink);border-radius:50%;margin-right:8px;
+}
+.hero-copy{position:relative;z-index:2;width:75%}
+h1{
+  font-size:clamp(50px,6.5vw,82px);
+  line-height:1.15;font-weight:400;
+  letter-spacing:-2px;margin:48px 0 24px;
+}
+h1 strong{
+  font-weight:700;
+  background:linear-gradient(
+    transparent 77%,#fffef3a0 77%,#fffef3a0 94%,transparent 94%
+  );
+}
+.hero-copy p{font-size:22px;line-height:1.65;margin:0}
+.button{
+  display:inline-flex;align-items:center;
+  justify-content:space-between;gap:35px;
+  background:var(--ink);color:var(--paper);
+  border:1px solid var(--ink);border-radius:40px;
+  padding:11px 23px;margin-top:25px;font-size:20px;
+  box-shadow:3px 4px 0 #35372d20;
+}
+.button:hover{background:#535741}
+.hero-bottom{
+  position:relative;z-index:2;
+  display:flex;justify-content:space-between;gap:15px;
+  border-top:1px solid #35372d35;
+  margin-top:40px;padding-top:18px;font-size:16px;
+}
+.hero-flower{
+  position:absolute;width:260px;right:30px;top:190px;
+  transform:rotate(12deg);z-index:0;
+}
+.intro-line{
+  text-align:center;font-size:18px;color:var(--muted);
+  padding:24px 0;
+}
+.intro-line span{color:#a2945c;padding:0 12px}
+.section{padding:70px 0;border-bottom:1px solid var(--line)}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:baseline;gap:20px;margin-bottom:35px;
+}
+.eyebrow{color:var(--muted);font-weight:700}
+h2{font-size:42px;font-weight:400;line-height:1.4;margin:10px 0 0}
+.number{font-size:25px;color:#a19e8a}
+.about-grid{
+  display:grid;grid-template-columns:.85fr 1.25fr;gap:65px;
+}
+.portrait{
+  position:relative;overflow:hidden;
+  min-height:390px;
+  background:#f6edcc;
+  border:9px solid white;
+  outline:1px solid var(--line);
+  border-radius:150px 150px 25px 25px;
+  box-shadow:0 10px 25px #675b2d0c;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;
+}
+.portrait svg{width:100%;height:325px}
+.portrait-caption{
+  font-size:17px;text-align:center;
+  padding:0 12px 15px;color:var(--muted);
+}
+.portrait img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+}
+.name-line{
+  display:flex;justify-content:space-between;
+  gap:12px;margin-top:18px;font-size:20px;
+}
+.about-copy h3{
+  font-size:31px;font-weight:400;line-height:1.5;margin:0 0 22px;
+}
+.about-copy p{font-size:21px;color:var(--muted);margin:0 0 20px}
+.cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;margin-top:45px;
+}
+.card{
+  border:1px solid var(--line);
+  background:var(--paper);padding:25px;
+  border-radius:25px 25px 8px 25px;
+  box-shadow:3px 5px 0 #eeeddf;
+}
+.card-icon{font-size:27px;color:#8b804d}
+.card h3{font-size:25px;line-height:1.4;margin:14px 0 10px}
+.card p{font-size:20px;color:var(--muted);margin:0}
+.tag{
+  display:inline-block;background:#faf3d5;
+  border:1px solid #e9dfba;border-radius:30px;
+  padding:3px 12px;font-size:16px;margin-top:18px;
+}
+.hobby{
+  display:grid;grid-template-columns:.85fr 1.25fr;
+  gap:65px;margin-top:55px;padding-top:35px;
+  border-top:1px solid var(--line);
+}
+.hobby h3{font-size:29px;font-weight:400;margin:8px 0}
+.hobby-tags{display:flex;flex-wrap:wrap;gap:10px;align-content:start}
+.hobby-tags span{
+  font-size:19px;padding:6px 15px;background:var(--paper);
+  border:1px solid var(--line);border-radius:30px;
+}
+.work-intro{margin:-15px 0 30px;color:var(--muted);font-size:21px}
+.works{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.work-art{
+  position:relative;overflow:hidden;
+  min-height:260px;border-radius:24px;
+  background:#f5edcf;display:grid;
+  place-content:center;text-align:center;gap:15px;
+  border:1px solid #e5ddc5;color:var(--muted);
+}
+.work:nth-child(2) .work-art{background:#eeeee4}
+.work-art svg{width:100px;height:100px;margin:auto}
+.work-art span{font-size:18px}
+.work-art img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.work-meta{
+  display:flex;justify-content:space-between;gap:15px;
+  margin-top:20px;color:var(--muted);
+}
+.date{font-size:12px;letter-spacing:.5px}
+.work h3{font-size:36px;margin:7px 0 0}
+.work p{font-size:22px;margin:0;color:var(--muted)}
+.closing{
+  text-align:center;margin:65px 0 35px;
+  background:#f8edbb;padding:45px 25px;
+  border:1px solid #e7d996;
+  border-radius:70px 20px 70px 20px;
+}
+.closing h2{font-size:36px;margin:15px 0 10px}
+.closing p{font-size:21px;color:var(--muted);margin:0}
+.closing a{
+  display:inline-block;border-bottom:1px solid var(--ink);
+  margin-top:25px;font-size:19px;
+}
+footer{
+  display:flex;justify-content:space-between;gap:15px;
+  font-size:18px;color:var(--muted);padding-bottom:35px;
+}
+#ripples{
+  position:fixed;inset:0;pointer-events:none;z-index:15;
+}
+.motion-toggle{
+  position:fixed;bottom:16px;right:16px;z-index:16;
+  font-size:16px;border:1px solid var(--line);
+  border-radius:30px;padding:7px 15px;
+  background:var(--paper);color:var(--ink);
+}
+.motion-toggle[hidden]{display:none}
+@media(max-width:800px){
+  .hero-panel{padding:35px 30px}
+  h1{font-size:65px}
+  .hero-copy{width:90%}
+  .hero-flower{width:180px;right:0;top:260px;opacity:.7}
+  .about-grid,.hobby{gap:30px;grid-template-columns:.9fr 1fr}
+  .cards{gap:12px}
+  .card{padding:20px}
+}
+@media(max-width:560px){
+  html{scroll-padding-top:85px}
+  .header-inner{min-height:68px}
+  .brand{font-size:22px}
+  .menu{display:block}
+  nav{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    padding:20px 5%;background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  nav.open{display:flex}
+  .hero{padding-top:22px}
+  .hero-panel{
+    padding:28px 24px;
+    border-radius:55px 20px 55px 20px;
+  }
+  .hero-top .eyebrow{font-size:8px;letter-spacing:1px}
+  .status{font-size:13px}
+  h1{font-size:54px;margin-top:40px}
+  .hero-copy{width:100%}
+  .hero-copy p{font-size:20px;max-width:270px}
+  .button{font-size:19px;gap:25px}
+  .hero-flower{top:335px;right:-16px;width:135px;opacity:.45}
+  .hero-bottom{font-size:12px;margin-top:35px}
+  .intro-line{font-size:14px}
+  .intro-line span{padding:0 3px}
+  .section{padding:50px 0}
+  h2{font-size:35px}
+  .section-head{margin-bottom:28px}
+  .about-grid,.hobby,.works,.cards{grid-template-columns:1fr;gap:28px}
+  .portrait{min-height:390px}
+  .about-copy h3{font-size:29px}
+  .about-copy p{font-size:21px}
+  .cards{margin-top:28px;gap:16px}
+  .card-icon{float:right}
+  .hobby{margin-top:35px;gap:18px}
+  .closing{margin-top:45px;padding:35px 22px}
+  .closing h2{font-size:30px}
+  .closing p{font-size:20px}
+  footer{flex-direction:column;gap:3px;padding-bottom:85px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+
+<body>
+<a href="#main" class="skip">본문으로 건너뛰기</a>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#home">나의 포트폴리오</a>
+    <button class="menu" aria-expanded="false"
+      aria-controls="navigation">메뉴</button>
+    <nav id="navigation" aria-label="주 메뉴">
+      <a href="#home" aria-current="page">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#work">WORK</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section id="home" class="hero" aria-labelledby="hero-title">
+    <div class="hero-panel">
+      <div class="hero-top">
+        <span class="eyebrow">LEE WOOJUNG · PERSONAL PORTFOLIO</span>
+        <span class="status">조금씩, 배우는 중</span>
+      </div>
+
+      <div class="hero-copy">
+        <h1 id="hero-title">
+          안녕하세요!<br>
+          <strong>더 클 아이,</strong><br>
+          이우정입니다.
+        </h1>
+        <p>
+          모르는 분야도 알아가고 싶은 사람.<br>
+          새로운 도전에도 성실히 배우고,<br>
+          맡은 일을 ‘나의 일’로 생각합니다.
+        </p>
+        <a class="button" href="#work">
+          나의 이야기 둘러보기
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <svg class="hero-flower" viewBox="0 0 260 300"
+        fill="none" aria-hidden="true">
+        <path
+          d="M137 189Q163 236 126 298
+          M141 238Q106 205 88 230Q99 259 141 238
+          M144 253Q175 224 190 239Q177 266 144 253"
+          stroke="#737c4f" stroke-width="2"/>
+        <g fill="#fffef3" stroke="#81784f" stroke-width="1.4">
+          <ellipse cx="130" cy="73" rx="26" ry="56"/>
+          <ellipse cx="130" cy="73" rx="26" ry="56"
+            transform="rotate(45 130 130)"/>
+          <ellipse cx="130" cy="73" rx="26" ry="56"
+            transform="rotate(90 130 130)"/>
+          <ellipse cx="130" cy="73" rx="26" ry="56"
+            transform="rotate(135 130 130)"/>
+          <ellipse cx="130" cy="73" rx="26" ry="56"
+            transform="rotate(180 130 130)"/>
+          <ellipse cx="130" cy="73" rx="26" ry="56"
+            transform="rotate(225 130 130)"/>
+          <ellipse cx="130" cy="73" rx="26" ry="56"
+            transform="rotate(270 130 130)"/>
+          <ellipse cx="130" cy="73" rx="26" ry="56"
+            transform="rotate(315 130 130)"/>
+          <circle cx="130" cy="130" r="31" fill="#eac44c"/>
+        </g>
+        <path d="M119 134Q131 145 142 134"
+          stroke="#665b3c" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="118" cy="123" r="2" fill="#665b3c"/>
+        <circle cx="141" cy="123" r="2" fill="#665b3c"/>
+      </svg>
+
+      <div class="hero-bottom">
+        <span>밝은 목소리 · 상냥함 · 새로운 도전</span>
+        <span>나의 이야기 ↓</span>
+      </div>
+    </div>
+    <div class="intro-line">
+      성실하게 배우고 <span>✳</span>
+      친절하게 소통하고 <span>✳</span>
+      새로운 경험에 도전하기
+    </div>
+  </section>
+
+  <section id="about" class="section" aria-labelledby="about-title">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">ABOUT ME</div>
+        <h2 id="about-title">조금 더, 저를 소개할게요.</h2>
+      </div>
+      <span class="number">01 /</span>
+    </div>
+
+    <div class="about-grid">
+      <div>
+        <div class="portrait">
+          <!--
+            실제 사진으로 교체하는 방법
+            1. profile.jpg를 index.html과 같은 폴더에 넣습니다.
+            2. 아래 svg와 portrait-caption을 지웁니다.
+            3. 다음 태그를 넣습니다.
+            <img src="profile.jpg" alt="이우정의 프로필 사진">
+
+            아래 그림은 실제 인물을 재현한 것이 아닌 임시 일러스트입니다.
+          -->
+          <svg viewBox="0 0 360 330" fill="none" role="img"
+            aria-label="노란 옷을 입고 꽃과 함께 있는 인물의 임시 일러스트">
+            <circle cx="180" cy="150" r="115" fill="#fff9e5"/>
+            <path d="M43 273Q62 233 84 270M286 269Q305 225 320 264"
+              stroke="#a7ae7a" stroke-width="3"/>
+            <path d="M90 330v-42c0-59 180-59 180 0v42"
+              fill="#e5bc48" stroke="#706340" stroke-width="2"/>
+            <path
+              d="M118 183c-20-87 9-124 65-124
+              61 0 79 49 59 124l-10 63H127Z"
+              fill="#5c5248"/>
+            <path d="M162 216v32q18 20 37 0v-33"
+              fill="#edc9ae" stroke="#706340" stroke-width="2"/>
+            <ellipse cx="180" cy="159" rx="57" ry="70"
+              fill="#f5d8bf"/>
+            <path
+              d="M124 146q-2-69 57-70
+              67 10 56 75-28-16-38-46-27 34-75 41Z"
+              fill="#5c5248"/>
+            <path d="M150 160q6-7 12 0m35 0q6-7 12 0"
+              stroke="#65554b" stroke-width="3"
+              stroke-linecap="round"/>
+            <path d="M169 185q12 12 24-1"
+              stroke="#986c58" stroke-width="2.5"
+              stroke-linecap="round"/>
+            <ellipse cx="146" cy="177" rx="10" ry="5" fill="#eab0a0"/>
+            <ellipse cx="214" cy="177" rx="10" ry="5" fill="#eab0a0"/>
+            <path d="m153 245 27 22 26-22M180 267v63"
+              stroke="#a18a43" stroke-width="2"/>
+            <path d="M275 164q-10 60 7 109"
+              stroke="#8a9567" stroke-width="3"/>
+            <g fill="#fffdf4" stroke="#b5a46c">
+              <ellipse cx="274" cy="138" rx="12" ry="23"/>
+              <ellipse cx="274" cy="138" rx="12" ry="23"
+                transform="rotate(60 274 159)"/>
+              <ellipse cx="274" cy="138" rx="12" ry="23"
+                transform="rotate(120 274 159)"/>
+              <ellipse cx="274" cy="138" rx="12" ry="23"
+                transform="rotate(180 274 159)"/>
+              <ellipse cx="274" cy="138" rx="12" ry="23"
+                transform="rotate(240 274 159)"/>
+              <ellipse cx="274" cy="138" rx="12" ry="23"
+                transform="rotate(300 274 159)"/>
+              <circle cx="274" cy="159" r="12" fill="#e6c05a"/>
+            </g>
+            <path d="m76 112 4 10 11 2-10 5-2 11-5-10-11-2 10-5Z"
+              fill="#ddbb55"/>
+          </svg>
+          <div class="portrait-caption">
+            나의 사진이 들어갈 자리 · 임시 일러스트
+          </div>
+        </div>
+        <div class="name-line">
+          <strong>이우정</strong>
+          <span>직장인 · 배우는 사람</span>
+        </div>
+      </div>
+
+      <div class="about-copy">
+        <h3>“저는 모르는 분야도<br>알아가고 싶은 사람입니다.”</h3>
+        <p>
+          현재 AI 시대의 흐름에 발맞춰 가기 위해, 늦게나마
+          AI 바이브 코딩에 대해 배우고 있습니다.
+          앞으로의 직업이나 생활에 있어서 매우 필요한 역량이
+          될 것 같아 서툴지만 조금씩 배우는 중입니다.
+        </p>
+        <p>
+          꼼꼼한 작업과 고객 응대가 적성에 맞아 쇼핑몰 관련
+          사무 업무와 거래처별 특성에 맞는 관리 업무를 해보았습니다.
+          직접 만드는 작업이나 행동하는 일도 좋아하며,
+          고객에게 작은 서비스를 제공할 수 있을 때 성취감을 느낍니다.
+        </p>
+        <p>
+          앞으로는 영상 편집이나 AI를 활용한 업무 분야에도
+          새롭게 도전해보고 싶습니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">✳</span>
+        <h3>친절함을 담은 소통</h3>
+        <p>밝고 명랑한 목소리로 응대하고, 상냥하고 친절하게 의사소통합니다.</p>
+        <span class="tag">친절한 CS · 의사소통</span>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">↗</span>
+        <h3>끝까지, 나의 일처럼</h3>
+        <p>새로운 도전에도 성실히 익히고, 맡은 일에 책임감을 갖습니다.</p>
+        <span class="tag">성실함 · 책임감</span>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">☼</span>
+        <h3>지금 배우는 새로운 것</h3>
+        <p>AI를 활용한 웹사이트 제작을 배우며, 새로운 경험에 도전합니다.</p>
+        <span class="tag">AI · 바이브 코딩</span>
+      </article>
+    </div>
+
+    <div class="hobby">
+      <div>
+        <div class="eyebrow">LITTLE JOYS</div>
+        <h3>저를 즐겁게 하는 것들</h3>
+      </div>
+      <div class="hobby-tags">
+        <span>좋아하는 밴드 공연</span>
+        <span>영화 관람</span>
+        <span>동생과 노는 시간</span>
+        <span>남편과 함께하는 시간</span>
+        <span>밤에 함께 보는 나는솔로</span>
+        <span>OTT로 보는 애니메이션</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section" aria-labelledby="work-title">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">LIFE &amp; EXPERIENCES</div>
+        <h2 id="work-title">나의 삶에 남은 순간들.</h2>
+      </div>
+      <span class="number">02 /</span>
+    </div>
+    <p class="work-intro">
+      저의 이야기를 이루는 두 가지 경험을 소개합니다.
+    </p>
+
+    <div class="works">
+      <article class="work">
+        <div class="work-art">
+          <!-- 사진 교체: 내부 svg와 span 대신 아래 태그 사용
+            <img src="birth.jpg" alt="탄생을 기념하는 사진">
+          -->
+          <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="42" fill="#fff9e5"/>
+            <path
+              d="m50 17 8 23 24 1-19 15 6 24-19-14-20 14
+              7-24-20-15 25-1Z"
+              fill="#efcf69" stroke="#a39463" stroke-linejoin="round"/>
+            <path d="M41 53q9 10 18 0" stroke="#8b7c50"
+              stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>첫 번째 이야기 · 사진이 들어갈 자리</span>
+        </div>
+        <div class="work-meta">
+          <span class="date">1992.07 · 서울시 사당동</span>
+          <span>01</span>
+        </div>
+        <h3>탄생</h3>
+        <p>응애~~~</p>
+      </article>
+
+      <article class="work">
+        <div class="work-art">
+          <!-- 사진 교체: 내부 svg와 span 대신 아래 태그 사용
+            <img src="wedding.jpg" alt="결혼을 기념하는 사진">
+          -->
+          <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="42" fill="#faf8ee"/>
+            <circle cx="37" cy="57" r="20" stroke="#b3a05f"
+              stroke-width="3"/>
+            <circle cx="63" cy="57" r="20" stroke="#b3a05f"
+              stroke-width="3"/>
+            <path d="m43 25 7-9 7 9-7 9Z"
+              fill="#efcf69" stroke="#b3a05f"/>
+            <path d="M21 21v9M17 25h9M79 29v9M75 33h9"
+              stroke="#a8ad88" stroke-width="2"/>
+          </svg>
+          <span>함께한 이야기 · 사진이 들어갈 자리</span>
+        </div>
+        <div class="work-meta">
+          <span class="date">2025.12</span>
+          <span>02</span>
+        </div>
+        <h3>결혼</h3>
+        <p>남편을 만남.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="closing">
+    <div class="eyebrow">THANK YOU FOR VISITING</div>
+    <h2>새로운 경험을, 저의 다음 이야기로.</h2>
+    <p>조금씩 배우고 있는 저의 공간에 들러주셔서 감사합니다.</p>
+    <a href="#home">처음으로 돌아가기 ↑</a>
+  </div>
+</main>
+
+<footer class="wrap">
+  <span>나의 포트폴리오 · 이우정</span>
+  <span>밝게, 다정하게, 성실하게.</span>
+</footer>
+
+<canvas id="ripples" aria-hidden="true"></canvas>
+<button class="motion-toggle" id="motion"
+  aria-pressed="true" hidden>물결 효과 켜짐</button>
+
+<script>
+// 마우스 이동 또는 클릭에만 반응하는 잔잔한 물결.
+// 입력이 멈추면 0.9초 이내에 사라지고 그리기도 중단됩니다.
+const canvas = document.getElementById('ripples');
+const ctx = canvas.getContext('2d');
+const toggle = document.getElementById('motion');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+
+let enabled = !reduced.matches;
+let rings = [];
+let frame = 0;
+let last = 0;
+let width = 0;
+let height = 0;
+
+toggle.hidden = false;
+
+function updateLabel() {
+  toggle.textContent = '물결 효과 ' + (enabled ? '켜짐' : '꺼짐');
+  toggle.setAttribute('aria-pressed', String(enabled));
+}
+
+function clearRipples() {
+  cancelAnimationFrame(frame);
+  frame = 0;
+  rings = [];
+  ctx.clearRect(0, 0, width, height);
+}
+
+function resizeCanvas() {
+  width = innerWidth;
+  height = innerHeight;
+  const ratio = Math.min(devicePixelRatio || 1, 2);
+  canvas.width = width * ratio;
+  canvas.height = height * ratio;
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  clearRipples();
+}
+
+function drawRipples(now) {
+  ctx.clearRect(0, 0, width, height);
+  rings = rings.filter(ring => now - ring.time < 900);
+
+  for (const ring of rings) {
+    const progress = (now - ring.time) / 900;
+    ctx.strokeStyle =
+      'rgba(142,116,35,' + ((1 - progress) * .15) + ')';
+    ctx.lineWidth = 1;
+
+    for (let n = 0; n < 2; n++) {
+      ctx.beginPath();
+      ctx.ellipse(
+        ring.x, ring.y,
+        8 + progress * 90 + n * 13,
+        5 + progress * 57 + n * 8,
+        0, 0, Math.PI * 2
+      );
+      ctx.stroke();
+    }
+  }
+  frame = rings.length ? requestAnimationFrame(drawRipples) : 0;
+}
+
+function addRipple(event) {
+  if (!enabled || event.target.closest('button')) return;
+  const now = performance.now();
+
+  if (
+    event.type === 'pointermove' &&
+    (event.pointerType === 'touch' || now - last < 110)
+  ) return;
+
+  last = now;
+  rings.push({ x: event.clientX, y: event.clientY, time: now });
+  if (rings.length > 12) rings.shift();
+  if (!frame) frame = requestAnimationFrame(drawRipples);
+}
+
+toggle.addEventListener('click', () => {
+  enabled = !enabled;
+  updateLabel();
+  if (!enabled) clearRipples();
+});
+
+reduced.addEventListener('change', () => {
+  enabled = !reduced.matches;
+  updateLabel();
+  clearRipples();
+});
+
+addEventListener('resize', resizeCanvas);
+addEventListener('pointermove', addRipple, { passive: true });
+addEventListener('pointerdown', addRipple, { passive: true });
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) clearRipples();
+});
+
+resizeCanvas();
+updateLabel();
+
+// 모바일 메뉴
+const menu = document.querySelector('.menu');
+const nav = document.getElementById('navigation');
+
+function closeMenu() {
+  nav.classList.remove('open');
+  menu.setAttribute('aria-expanded', 'false');
+}
+
+menu.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  menu.setAttribute('aria-expanded', String(open));
+});
+
+nav.addEventListener('click', event => {
+  if (event.target.closest('a')) closeMenu();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && nav.classList.contains('open')) {
+    closeMenu();
+    menu.focus();
+  }
+});
+
+// 현재 섹션 표시
+const links = [...nav.querySelectorAll('a')];
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      links.forEach(link => {
+        if (link.hash === '#' + entry.target.id) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+  }, {
+    rootMargin: '-15% 0px -55% 0px',
+    threshold: 0
+  });
+
+  document.querySelectorAll('main section[id]').forEach(section => {
+    observer.observe(section);
+  });
+}
+</script>
+</body>
+</html>
